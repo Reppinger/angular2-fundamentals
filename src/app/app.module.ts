@@ -1,9 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SimpleFormComponent } from './simple-form/simple-form.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {SimpleFormComponent} from './simple-form/simple-form.component';
 import {MailService} from './mail.service';
 
 @NgModule({
@@ -15,7 +15,9 @@ import {MailService} from './mail.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [MailService],
+  providers: [{provide: 'mail', useClass: MailService},
+    {provide: 'api', useValue: 'http://localhost/api'}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
